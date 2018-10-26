@@ -1,0 +1,8 @@
+[package]
+authors = ["Frederick Gnodtke <frederick@gnodtke.net>"]
+build = "build.rs"
+name = "libsamplerate-sys"
+version = "0.1.0"
+
+[build-dependencies]
+bindgen = "*"
