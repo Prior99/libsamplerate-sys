@@ -2,7 +2,13 @@
 authors = ["Frederick Gnodtke <frederick@gnodtke.net>"]
 build = "build.rs"
 name = "libsamplerate-sys"
+description = "FFI bindings for libsamplerate"
+repository = "https://github.com/Prior99/libsamplerate-sys"
+keywords = ["libsamplerate", "c", "ffi", "audio", "samplerate"]
+license = "BSD-2-Clause"
 version = "0.1.0"
+readme = "README.md"
+categories = ["multimedia::audio"]
 
 [build-dependencies]
 bindgen = "*"
