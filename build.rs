@@ -17,7 +17,7 @@ fn build_libsamplerate() {
     let dst = PathBuf::from(&env::var_os("OUT_DIR").unwrap());
     let _ = fs::create_dir(&dst);
 
-    run(Command::new("cmake").args(&[src.to_str().unwrap()]).current_dir(&dst));
+    run(Command::new("cmake").args(&["-DCMAKE_C_FLAGS=-fPIC", src.to_str().unwrap()]).current_dir(&dst));
     run(Command::new("make").current_dir(&dst));
     let shlib = src.join("src/.libs");
     let _ = fs::copy(&shlib.join("libsamplerate.a"), &dst.join("libsamplerate.a"));
