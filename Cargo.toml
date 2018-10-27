@@ -11,4 +11,4 @@ readme = "README.md"
 categories = ["multimedia::audio"]
 
 [build-dependencies]
-bindgen = "*"
+bindgen = "0.43"
