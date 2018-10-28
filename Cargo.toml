@@ -12,3 +12,4 @@ categories = ["multimedia::audio"]
 
 [build-dependencies]
 bindgen = "0.43"
+pathdiff = "0.1"
