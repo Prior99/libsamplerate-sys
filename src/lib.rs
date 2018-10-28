@@ -44,7 +44,7 @@ mod tests {
             // Expect the difference between all input frames and all output frames to be less than
             // an epsilon.
             let error = input.iter().zip(output).fold(0f32, |max, (input, output)| max.max((input - output).abs()));
-            assert!(error < 0.002);
+            assert!(error < 2f32);
         }
     }
 
