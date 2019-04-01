@@ -27,6 +27,7 @@ mod tests {
                 end_of_input: 0,
                 input_frames_used: 0,
                 output_frames_gen: 0,
+                ..Default::default()
             };
             src_simple(&mut src_pass_1 as *mut SRC_DATA, SRC_SINC_BEST_QUALITY as i32, 1);
             // Convert from 48000Hz to 44100Hz.
@@ -39,6 +40,7 @@ mod tests {
                 end_of_input: 0,
                 input_frames_used: 0,
                 output_frames_gen: 0,
+                ..Default::default()
             };
             src_simple(&mut src_pass_2 as *mut SRC_DATA, SRC_SINC_BEST_QUALITY as i32, 1);
             // Expect the difference between all input frames and all output frames to be less than
@@ -70,6 +72,7 @@ mod tests {
                 end_of_input: 0,
                 input_frames_used: 0,
                 output_frames_gen: 0,
+                ..Default::default()
             };
             // Convert the input data in slices.
             let slices = 10;
@@ -90,6 +93,7 @@ mod tests {
                 end_of_input: 0,
                 input_frames_used: 0,
                 output_frames_gen: 0,
+                ..Default::default()
             };
             src_simple(&mut src_reverse as *mut SRC_DATA, SRC_SINC_BEST_QUALITY as i32, 1);
             // Expect the difference between all input frames and all output frames to be less than
