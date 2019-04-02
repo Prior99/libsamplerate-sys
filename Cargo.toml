@@ -10,6 +10,9 @@ version = "0.1.3"
 readme = "README.md"
 categories = ["multimedia::audio"]
 
+[dev-dependencies]
+all_asserts = "0.1.4"
+
 [build-dependencies]
 bindgen = "0.49"
 pathdiff = "0.1"
