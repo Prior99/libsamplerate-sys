@@ -15,7 +15,20 @@ fn run(cmd: &mut Command) {
 }
 
 fn build_libsamplerate_unix(src: &PathBuf, dst: &PathBuf) {
-    run(Command::new("cmake").args(&["-DCMAKE_C_FLAGS=-fPIC", diff_paths(&src, &dst).unwrap().to_str().unwrap()]).current_dir(&dst));
+    run(Command::new("cmake")
+        .args(&[
+            "-DCMAKE_C_FLAGS=-fPIC",
+            &format!(
+                "-DCMAKE_BUILD_TYPE={}",
+                if env::var("PROFILE").map(|x| x == "release").unwrap_or(false) {
+                    "Release"
+                } else {
+                    "Debug"
+                }
+            ),
+            diff_paths(&src, &dst).unwrap().to_str().unwrap(),
+        ])
+        .current_dir(&dst));
     run(Command::new("make").args(&["samplerate"]).current_dir(&dst));
     let shlib = src.join("src/.libs");
     let _ = fs::copy(&shlib.join("libsamplerate.a"), &dst.join("libsamplerate.a"));
