@@ -4,6 +4,12 @@
 
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
+impl Default for SRC_DATA {
+    fn default() -> Self {
+        unsafe { std::mem::zeroed() }
+    }
+}
+
 #[cfg(test)]
 #[macro_use]
 extern crate all_asserts;
