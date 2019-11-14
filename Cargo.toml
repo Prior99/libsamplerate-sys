@@ -14,5 +14,5 @@ categories = ["multimedia::audio"]
 all_asserts = "0.1.4"
 
 [build-dependencies]
-bindgen = "0.49"
+bindgen = "0.51"
 pathdiff = "0.1"
