@@ -20,3 +20,5 @@ jobs:
         cargo build
     - run: |
         cargo test
+    - run: |
+        cargo package
