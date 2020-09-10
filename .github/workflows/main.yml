@@ -6,13 +6,25 @@ jobs:
   tests:
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest]
+        include:
+        - os: macos-latest
+        - os: windows-latest
+          toolchain-suffix: -gnu
+        - os: windows-latest
+          toolchain-suffix: -msvc
+        - os: ubuntu-latest
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions-rs/toolchain@v1
       with:
         profile: minimal
-        toolchain: stable
+        toolchain: stable${{ matrix.toolchain-suffix }}
+        override: true
+    - run: |
+        rustup show
+    - run: |
+        choco install llvm
+      if: startsWith(matrix.os, 'windows')
     - uses: actions/checkout@v2
       with:
         submodules: true
