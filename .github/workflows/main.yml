@@ -1,0 +1,36 @@
+name: Build and run tests
+on: [push, pull_request]
+env:
+  CARGO_TERM_COLOR: always
+jobs:
+  tests:
+    strategy:
+      matrix:
+        include:
+        - os: macos-latest
+        - os: windows-latest
+          toolchain-suffix: -gnu
+        - os: windows-latest
+          toolchain-suffix: -msvc
+        - os: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: stable${{ matrix.toolchain-suffix }}
+        override: true
+    - run: |
+        rustup show
+    - run: |
+        choco install llvm
+      if: startsWith(matrix.os, 'windows')
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+    - run: |
+        cargo build
+    - run: |
+        cargo test
+    - run: |
+        cargo package
