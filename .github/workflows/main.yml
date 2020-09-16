@@ -6,19 +6,23 @@ jobs:
   tests:
     strategy:
       matrix:
+        toolchain: [stable, nightly]
+        toolchain-suffix: [unknown-linux-gnu, apple-darwin, pc-windows-msvc, pc-windows-gnu]
         include:
-        - os: macos-latest
-        - os: windows-latest
-          toolchain-suffix: -gnu
-        - os: windows-latest
-          toolchain-suffix: -msvc
-        - os: ubuntu-latest
+          - toolchain-suffix: unknown-linux-gnu
+            os: ubuntu-latest
+          - toolchain-suffix: apple-darwin
+            os: macos-latest
+          - toolchain-suffix: pc-windows-gnu
+            os: windows-latest
+          - toolchain-suffix: pc-windows-msvc
+            os: windows-latest
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions-rs/toolchain@v1
       with:
         profile: minimal
-        toolchain: stable${{ matrix.toolchain-suffix }}
+        toolchain: ${{ matrix.toolchain }}-${{ matrix.toolchain-suffix }}
         override: true
     - run: |
         rustup show
