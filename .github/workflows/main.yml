@@ -19,6 +19,9 @@ jobs:
             os: windows-latest
     runs-on: ${{ matrix.os }}
     steps:
+    - if: startsWith(matrix.os, 'macos')
+      run: |
+        brew install libsamplerate
     - uses: actions-rs/toolchain@v1
       with:
         profile: minimal
