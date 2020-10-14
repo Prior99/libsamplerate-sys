@@ -21,6 +21,9 @@ jobs:
     steps:
     - if: startsWith(matrix.os, 'macos')
       run: |
+        sudo xcode-select --switch /Applications/Xcode_12.app
+    - if: startsWith(matrix.os, 'macos')
+      run: |
         brew install libsamplerate
     - uses: actions-rs/toolchain@v1
       with:
