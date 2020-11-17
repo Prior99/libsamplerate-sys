@@ -8,4 +8,4 @@ To conform with the `-sys` naming scheme, this project does not provide any high
 
 The bindings have been auto-generated with [bindgen](https://crates.io/crates/bindgen):
 
-    bindgen wrapper.h -o src/bindings.rs
+    bindgen wrapper.h --no-layout-tests -o src/bindings.rs
