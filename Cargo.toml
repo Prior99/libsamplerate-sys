@@ -14,5 +14,4 @@ categories = ["multimedia::audio"]
 all_asserts = "0.1.4"
 
 [build-dependencies]
-bindgen = "0.51"
 cmake = "0.1"
