@@ -14,6 +14,4 @@ categories = ["multimedia::audio"]
 all_asserts = "0.1.4"
 
 [build-dependencies]
-bindgen = "0.51"
-# 0.1.45 adds cmake::Config::get_profile()
-cmake = "0.1.45"
+cmake = "0.1"

@@ -26,9 +26,6 @@ jobs:
         override: true
     - run: |
         rustup show
-    - run: |
-        choco install llvm
-      if: startsWith(matrix.os, 'windows')
     - uses: actions/checkout@v2
       with:
         submodules: true
