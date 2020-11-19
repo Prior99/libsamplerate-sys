@@ -5,8 +5,15 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
-    let libsr = cmake::build("libsamplerate");
-    println!("cargo:rustc-link-search=native={}", libsr.join("lib").display());
+    let mut config = cmake::Config::new("libsamplerate");
+    config.build_target("samplerate");
+    let mut path = config.build();
+    if std::env::var("TARGET").unwrap().contains("msvc") {
+        path = path.join("build").join(config.get_profile());
+    } else {
+        path = path.join("build");
+    }
+    println!("cargo:rustc-link-search=native={}", path.display());
     println!("cargo:rustc-link-lib=static=samplerate");
 
     let bindings = bindgen::Builder::default()
