@@ -10,6 +10,21 @@ version = "0.1.8"
 readme = "README.md"
 categories = ["multimedia::audio"]
 
+exclude = [
+    ".*",
+    "libsamplerate/appveyor.yml",
+    "libsamplerate/autogen.sh",
+    "libsamplerate/configure.ac",
+    "libsamplerate/Make.bat",
+    "libsamplerate/Makefile.am",
+    "libsamplerate/libsamplerate.spec.in",
+    "libsamplerate/doc/",
+    "libsamplerate/Octave/",
+    "libsamplerate/examples/",
+    "libsamplerate/m4/",
+    "libsamplerate/tests/",
+]
+
 [dev-dependencies]
 all_asserts = "2.2.0"
 
