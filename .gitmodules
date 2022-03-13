@@ -1,3 +1,6 @@
 [submodule "libsamplerate"]
 	path = libsamplerate
 	url = https://github.com/erikd/libsamplerate
+[submodule "ios-cmake"]
+	path = ios-cmake
+	url = https://github.com/leetal/ios-cmake
