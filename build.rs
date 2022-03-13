@@ -6,8 +6,16 @@ fn main() {
         .define("LIBSAMPLERATE_TESTS", "OFF")
         .define("LIBSAMPLERATE_EXAMPLES", "OFF")
         .define("LIBSAMPLERATE_INSTALL", "OFF")
+        .define("CMAKE_OSX_DEPLOYMENT_TARGET", "11.0")
+        .define("CMAKE_SYSTEM_NAME", "iOS")
+        .define("CMAKE_Swift_COMPILER_FORCED", "true")
+        .very_verbose(true)
         .build_target("samplerate");
-    let mut path = config.build();
+
+    let mut path = config
+        .very_verbose(true)
+        .build();
+
     if std::env::var("TARGET").unwrap().contains("msvc") {
         path = path.join("build").join(config.get_profile());
     } else {
