@@ -8,7 +8,13 @@ fn main() {
         .define("LIBSAMPLERATE_EXAMPLES", "OFF")
         .define("LIBSAMPLERATE_INSTALL", "OFF");
 
-    if std::env::var("TARGET").unwrap().contains("-ios") {
+    if std::env::var("TARGET").unwrap().contains("x86_64-apple-darwin") {
+        config
+            .define("CMAKE_OSX_ARCHITECTURES", "x86_64");
+    } else if std::env::var("TARGET").unwrap().contains("aarch64-apple-darwin") {
+        config
+            .define("CMAKE_OSX_ARCHITECTURES", "arm64");
+    } else if std::env::var("TARGET").unwrap().contains("-ios") {
         config
             .define("CMAKE_TOOLCHAIN_FILE", format!("{}/ios-cmake/ios.toolchain.cmake", manifest_path))
             .define("PLATFORM", "OS64")
