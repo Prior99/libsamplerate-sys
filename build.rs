@@ -26,9 +26,7 @@ fn main() {
     config
         .build_target("samplerate");
 
-    let mut path = config
-        .very_verbose(true)
-        .build();
+    let mut path = config.build();
 
     if std::env::var("TARGET").unwrap().contains("msvc") {
         path = path.join("build").join(config.get_profile());
