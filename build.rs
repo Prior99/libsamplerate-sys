@@ -1,5 +1,4 @@
-extern crate cmake;
-
+#[cfg(feature = "static")]
 fn main() {
     let manifest_path = env!("CARGO_MANIFEST_DIR");
     let mut config = cmake::Config::new("libsamplerate");
@@ -38,4 +37,9 @@ fn main() {
 
     println!("cargo:rustc-link-search=native={}", path.display());
     println!("cargo:rustc-link-lib=static=samplerate");
+}
+
+#[cfg(not(feature = "static"))]
+fn main() {
+    println!("cargo:rustc-link-lib=samplerate");
 }
